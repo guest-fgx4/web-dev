@@ -54,36 +54,38 @@ console.log(filtro);
 const initValue = 0;
 const mediaTotal = catalogo.reduce((soma, e) => soma + e.nota, initValue)
 
-console.log((mediaTotal / catalogo.length).toFixed(2));
+console.log(`Media Total dos filmes: ${(mediaTotal / catalogo.length).toFixed(2)}`);
 
 const mediaAss = filtro.reduce((soma, e) => soma + e.nota, initValue)
-console.log(mediaAss.toFixed(2));
+console.log(`Media Total dos filmes Assistidos: ${(mediaAss / filtro.length).toFixed(2)}`);
 
-const funAno = (e) => e.ano < 2000;
-const funGen = (e) => e.genero.length >= 1;
+
+
+
 
 const funSerie = (e) => e.Tipo == 'Serie';
 const funFilme = (e) => e.Tipo == 'Filme';
 
-const exist = catalogo.some(funAno)
-
 const quantSerie = catalogo.filter((e) => funSerie(e))
 const quantFilme = catalogo.filter((e) => funFilme(e))
 
-console.log(exist);
+const funAno = (e) => e.ano < 2000;
+const exist = catalogo.some(funAno)
+console.log((() => (exist) ? `Existe filme antes dos anos 200` : `Nao existe filme antes dos anos 200`)());
 
+
+const funGen = (e) => e.genero.length >= 1;
 const gen = catalogo.every(funGen)
+console.log((() => (exist) ? `Todos os filmes tem mais de um genero` : `Todos os filmes nao tem mais de um genero`)());
 
-console.log(gen);
+
 
 var dom = document.getElementById("output")
-
 console.log(dom);
 
 
+
 const sortedArray = catalogo.toSorted((a, b) => b.nota - a.nota);
-
-
 
 dom.innerHTML = dom.innerHTML + `<h3>Total de items no catalogo: ${catalogo.length}</h3>` +
     `<h3>Total de filmes no catalogo: ${quantFilme.length}</h3>` +
