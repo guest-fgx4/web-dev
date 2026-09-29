@@ -1,20 +1,15 @@
+//TODO: IMPLEMENT OTHER TABLE FOR CATEGORY
+const category = ["informatica", "eletronicos", "acessorios", "casa", "calcados", "roupas", "livros"]
+
+
 const data = {
     products:
         [
             {
-                "id": 1,
-                "nome": "Fone de Ouvido Bluetooth",
-                "preco": 149.9,
-                "categoria": "eletronicos",
-                "imagem": "https://images.unsplash.com/photo-1779896412317-5768a1911afb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                "descricao": "Fone de ouvido sem fio com conexão Bluetooth e bateria de longa duração.",
-                "emEstoque": true
-            },
-            {
                 "id": 2,
                 "nome": "Teclado Mecânico RGB",
                 "preco": 299.90,
-                "categoria": "informatica",
+                "categoria": 0,
                 "imagem": "https://images.unsplash.com/photo-1779896412317-5768a1911afb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 "descricao": "Teclado mecânico compacto com iluminação RGB e switches de alta precisão.",
                 "emEstoque": true
@@ -23,7 +18,7 @@ const data = {
                 "id": 3,
                 "nome": "Mouse Gamer",
                 "preco": 179.90,
-                "categoria": "informatica",
+                "categoria": 0,
                 "imagem": "https://images.unsplash.com/photo-1779896412317-5768a1911afb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 "descricao": "Mouse gamer ergonômico com sensor de alta precisão e iluminação RGB.",
                 "emEstoque": true
@@ -32,7 +27,7 @@ const data = {
                 "id": 4,
                 "nome": "Cadeira Gamer",
                 "preco": 899.90,
-                "categoria": "informatica",
+                "categoria": 0,
                 "imagem": "https://images.unsplash.com/photo-1779896412317-5768a1911afb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 "descricao": "Cadeira gamer ergonômica com apoio lombar e ajustes de altura e inclinação.",
                 "emEstoque": false
@@ -41,7 +36,7 @@ const data = {
                 "id": 5,
                 "nome": "Smartwatch Esportivo",
                 "preco": 399.90,
-                "categoria": "eletronicos",
+                "categoria": 1,
                 "imagem": "https://images.unsplash.com/photo-1779896412317-5768a1911afb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 "descricao": "Smartwatch com monitoramento de atividades físicas, batimentos cardíacos e notificações.",
                 "emEstoque": true
@@ -50,7 +45,7 @@ const data = {
                 "id": 6,
                 "nome": "Mochila para Notebook",
                 "preco": 129.90,
-                "categoria": "acessorios",
+                "categoria": 2,
                 "imagem": "https://images.unsplash.com/photo-1779896412317-5768a1911afb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 "descricao": "Mochila resistente com compartimento acolchoado para notebooks de até 15,6 polegadas.",
                 "emEstoque": true
@@ -59,7 +54,7 @@ const data = {
                 "id": 7,
                 "nome": "Garrafa Térmica Inox",
                 "preco": 89.90,
-                "categoria": "casa",
+                "categoria": 3,
                 "imagem": "https://images.unsplash.com/photo-1779896412317-5768a1911afb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 "descricao": "Garrafa térmica de aço inoxidável com capacidade de 750ml.",
                 "emEstoque": true
@@ -68,7 +63,7 @@ const data = {
                 "id": 8,
                 "nome": "Tênis Esportivo",
                 "preco": 249.90,
-                "categoria": "calcados",
+                "categoria": 4,
                 "imagem": "https://images.unsplash.com/photo-1779896412317-5768a1911afb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 "descricao": "Tênis leve e confortável para corridas, caminhadas e atividades físicas.",
                 "emEstoque": true
@@ -77,7 +72,7 @@ const data = {
                 "id": 9,
                 "nome": "Camiseta Básica",
                 "preco": 59.90,
-                "categoria": "roupas",
+                "categoria": 5,
                 "imagem": "https://images.unsplash.com/photo-1779896412317-5768a1911afb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 "descricao": "Camiseta básica de algodão, confortável e disponível em diversas cores.",
                 "emEstoque": true
@@ -86,7 +81,7 @@ const data = {
                 "id": 10,
                 "nome": "Luminária de Mesa LED",
                 "preco": 79.90,
-                "categoria": "casa",
+                "categoria": 3,
                 "imagem": "https://images.unsplash.com/photo-1779896412317-5768a1911afb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 "descricao": "Luminária de mesa LED com controle de intensidade e diferentes temperaturas de luz.",
                 "emEstoque": false
@@ -95,7 +90,7 @@ const data = {
                 "id": 11,
                 "nome": "Power Bank 20000mAh",
                 "preco": 159.90,
-                "categoria": "eletronicos",
+                "categoria": 1,
                 "imagem": "https://images.unsplash.com/photo-1779896412317-5768a1911afb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 "descricao": "Bateria portátil de 20000mAh com duas portas USB para carregamento simultâneo.",
                 "emEstoque": true
@@ -104,7 +99,7 @@ const data = {
                 "id": 12,
                 "nome": "Livro de Programação",
                 "preco": 119.90,
-                "categoria": "livros",
+                "categoria": 6,
                 "imagem": "https://images.unsplash.com/photo-1779896412317-5768a1911afb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
                 "descricao": "Livro introdutório sobre programação e desenvolvimento de aplicações modernas.",
                 "emEstoque": true
@@ -114,6 +109,57 @@ const data = {
         ]
 }
 
+pageData = {
+    control: { "currentId": 1 },
+    data: [{
+        "id": 1,
+        "nome": "Fone de Ouvido Bluetooth",
+        "preco": 149.9,
+        "categoria": 1,
+        "imagem": "https://images.unsplash.com/photo-1779896412317-5768a1911afb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "descricao": "Fone de ouvido sem fio com conexão Bluetooth e bateria de longa duração.",
+        "emEstoque": true
+    },]
+}
+
+const selectElement = document.getElementById("category-format")
+const getProductList = document.querySelector("#product-list")
+const getProductdetails = document.querySelectorAll(".product-details")
+const getProductCards = document.querySelectorAll(".card")
+const productDetailResult = document.getElementById("result-show-product")
+
+
+const btnformat = document.getElementById("btn-format-price")
+const btnCreateCard = document.getElementById("btn-create-card")
+
+
+function dataToJson(id, nome, preco, categoria, imagem, descricao, emEstoque) {
+
+    return {
+
+        "id": id,
+        "nome": nome,
+        "preco": preco,
+        "categoria": categoria,
+        "imagem": imagem,
+        "descricao": descricao,
+        "emEstoque": emEstoque
+    }
+}
+
+function updatePage() {
+    getProductList.innerHTML = "";
+    pageData.data.forEach(e => {
+        getProductList.innerHTML += createCard(e)
+    })
+
+    selectElement.innerHTML = "";
+    pageData.data.forEach(e => {
+        selectElement.innerHTML += `<option value="${e.id}">${e.nome}</option>`
+    })
+}
+
+
 function createCard(element) {
     let cardHtml = `<div class="col">
                         <div id="card-${element.id}" class="card" style="width: 18rem;">
@@ -122,7 +168,7 @@ function createCard(element) {
                                 <h5 class="card-title card-id">${element.id}</h5>
                                 <h5 class="card-title card-name">${element.nome}</h5>
                                 <h5 class="card-title card-price">${element.preco}</h5>
-                                <p class="card-text card-category">${element.categoria}</p>
+                                <p class="card-text card-category">${category[element.categoria]}</p>
                                 <p class="card-text product-details">${element.descricao}</p>
                                 <a href="#" class="btn btn-primary">ok</a>
                             </div>
@@ -134,6 +180,7 @@ function createCard(element) {
 
 function formatPrice(params) {
 
+    console.log("valor formPrice");
     console.log(params);
 
     let item = data.products.find((e) => e.id == params)
@@ -147,32 +194,59 @@ function formatPrice(params) {
     console.log(itemCard.getElementsByClassName("card-price")[0].innerHTML);
 
     let price = itemCard.getElementsByClassName("card-price")[0].innerHTML
-    
 
-    if (price.includes("R$"))
-    {
+
+    if (price.includes("R$")) {
         console.log("ok");
     }
-    else
-    {
+    else {
         console.log("nok");
         itemCard.getElementsByClassName("card-price")[0].innerHTML = "R$ " + Number(price).toFixed(2)
         console.log(price);
-        
+
     }
 }
 
 
-addEventListener
 
-const selectElement = document.getElementById("category-format")
-const getProductList = document.querySelector("#product-list")
-const getProductdetails = document.querySelectorAll(".product-details")
-const getProductCards = document.querySelectorAll(".card")
-const productDetailResult = document.getElementById("result-show-product")
+function createNewCard(params) {
 
+    let id = 0;
+    let nome = "";
+    let preco = 0.0;
+    let categoria = "";
+    let imagem = "";
+    let descricao = "";
+    let emEstoque = false;
 
-const btnformat = document.getElementById("btn-format-price")
+    console.log(params);
+
+    const rawdata = params.children;
+
+    console.log(rawdata);
+
+    id = pageData.control.currentId
+    pageData.control.currentId++
+
+    nome = rawdata[1].value
+
+    console.log(nome)
+
+    preco = Number(rawdata[3].value)
+
+    console.log(preco)
+
+    categoria = 0;
+    imagem = "https://images.unsplash.com/photo-1779896412317-5768a1911afb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    descricao = rawdata[10].value
+
+    pageData.data.push(dataToJson(id, nome, preco, categoria, imagem, descricao, emEstoque))
+    updatePage()
+
+    rawdata[1].value = ""
+    rawdata[3].value = 0
+    rawdata[10].value = ""
+}
 
 
 console.log(selectElement);
@@ -181,17 +255,30 @@ console.log(getProductdetails);
 console.log(getProductCards);
 
 
+console.log(pageData);
 
 
-data.products.forEach(element => {
-    selectElement.innerHTML += `<option value="${element.id}">${element.nome}</option>`
-});
 
-data.products.forEach(e => {
+// data.products.forEach(element => {
+//     // selectElement.innerHTML += `<option value="${element.id}">${element.nome}</option>`
+//     pageData.push(element)
+// });
+
+pageData.data.forEach(e => {
     getProductList.innerHTML += createCard(e)
+    pageData.control.currentId++;
+})
+
+pageData.data.forEach(e => {
+    selectElement.innerHTML += `<option value="${e.id}">${e.nome}</option>`
 })
 
 btnformat.addEventListener("click", () => {
     // console.log("Hello");
     formatPrice(selectElement.value)
+})
+
+btnCreateCard.addEventListener("click", () => {
+    let currentForm = document.getElementById("create-form-like")
+    createNewCard(currentForm)
 })
