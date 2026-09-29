@@ -123,6 +123,7 @@ pageData = {
 }
 
 const selectElement = document.getElementById("category-format")
+const selectCategory = document.querySelectorAll("#category")
 const getProductList = document.querySelector("#product-list")
 const getProductdetails = document.querySelectorAll(".product-details")
 const getProductCards = document.querySelectorAll(".card")
@@ -131,6 +132,9 @@ const productDetailResult = document.getElementById("result-show-product")
 
 const btnformat = document.getElementById("btn-format-price")
 const btnCreateCard = document.getElementById("btn-create-card")
+const btnFilter = document.getElementById("btn-filter")
+const btnFilterReset = document.getElementById("btn-filter-reset")
+
 
 
 function dataToJson(id, nome, preco, categoria, imagem, descricao, emEstoque) {
@@ -147,9 +151,9 @@ function dataToJson(id, nome, preco, categoria, imagem, descricao, emEstoque) {
     }
 }
 
-function updatePage() {
+function updatePage(params) {
     getProductList.innerHTML = "";
-    pageData.data.forEach(e => {
+    params.forEach(e => {
         getProductList.innerHTML += createCard(e)
     })
 
@@ -236,15 +240,17 @@ function createNewCard(params) {
 
     console.log(preco)
 
-    categoria = 0;
+    categoria = Number(rawdata[5].value)
     imagem = "https://images.unsplash.com/photo-1779896412317-5768a1911afb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     descricao = rawdata[10].value
 
     pageData.data.push(dataToJson(id, nome, preco, categoria, imagem, descricao, emEstoque))
-    updatePage()
+
+    updatePage(pageData.data)
 
     rawdata[1].value = ""
     rawdata[3].value = 0
+    rawdata[5].value = 0
     rawdata[10].value = ""
 }
 
@@ -264,14 +270,29 @@ console.log(pageData);
 //     pageData.push(element)
 // });
 
-pageData.data.forEach(e => {
-    getProductList.innerHTML += createCard(e)
-    pageData.control.currentId++;
-})
+function render() {
+    pageData.data.forEach(e => {
+        getProductList.innerHTML += createCard(e)
+        pageData.control.currentId++;
+    })
 
-pageData.data.forEach(e => {
-    selectElement.innerHTML += `<option value="${e.id}">${e.nome}</option>`
-})
+    console.log(selectCategory);
+
+    pageData.data.forEach(e => {
+        selectElement.innerHTML += `<option value="${e.id}">${e.nome}</option>`
+    })
+
+    selectCategory.forEach(e => {
+        let index = 0;
+        category.forEach(y => {
+            e.innerHTML += `<option value="${index}">${category[index++]}</option>`
+        })
+    })
+
+}
+
+render()
+
 
 btnformat.addEventListener("click", () => {
     // console.log("Hello");
@@ -281,4 +302,13 @@ btnformat.addEventListener("click", () => {
 btnCreateCard.addEventListener("click", () => {
     let currentForm = document.getElementById("create-form-like")
     createNewCard(currentForm)
+})
+
+btnFilter.addEventListener("click", () =>{
+    let selectedCategory = document.getElementsByClassName("btn-filter-selection")[0].value
+    updatePage(pageData.data.filter((e) => e.categoria == selectedCategory))
+})
+
+btnFilterReset.addEventListener("click", () => {
+    updatePage(pageData.data)
 })
