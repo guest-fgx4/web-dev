@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Ecommerce</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- Cabeçalho -->
+
+    <header
+        class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <div class="col-md-3 mb-2 mb-md-0"> <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+                <svg class="bi" width="40" height="32" role="img" aria-label="Bootstrap">
+                    <use xlink:href="#bootstrap"></use>
+                </svg> </a> </div>
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
+            <li><a href="#" class="nav-link px-2">Features</a></li>
+            <li><a href="#" class="nav-link px-2">Pricing</a></li>
+            <li><a href="#" class="nav-link px-2">FAQs</a></li>
+            <li><a href="#" class="nav-link px-2">About</a></li>
+        </ul>
+        <div class="col-md-3 text-end"> <button type="button" class="btn btn-outline-primary me-2">Login</button>
+            <button type="button" class="btn btn-primary">Sign-up</button>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <div class="row row-col-2">
+            <div class="col-9">
+                <div class="row" id="product-list">
+                    <div class="col">
+                        <div class="card" style="width: 18rem;">
+                            <img src="https://images.unsplash.com/photo-1779896412317-5768a1911afb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" style="height: 150px;" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title card-id">-1</h5>
+                                <h5 class="card-title card-name">Card title</h5>
+                                <h5 class="card-title card-price">1000</h5>
+                                <p class="card-text card-category">categoria</p>
+                                <p class="card-text product-details">Some quick example text to build on the card title
+                                    and make up the
+                                    bulk
+                                    of
+                                    the
+                                    card’s
+                                    content.</p>
+                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="row">
+                    <div class="col">
+                        <div class="form">
+                            <div class="caixa-pesquisa">
+                                <h3 class="titulo">Format price</h3>
+                                <select name="selecao" id="category-format"></select>
+                                <br>
+                                <button id="btn-format-price">Format price</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form">
+                            <form class="criar-card">
+                                <h3 class="titulo">Create card</h3>
+                                <input type="text" id="serach">
+                                <br>
+                                <select name="selecao" id="category">
+                                </select>
+                                <br>
+                                <button id="btn-create-card">Create Card</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form">
+                            <form class="criar-card">
+                                <h3 class="titulo">Update/render category</h3>
+                                <input type="text" id="serach">
+                                <br>
+                                <select name="selecao" id="category"></select>
+                                <br>
+                                <button id="btn-render-category">Render</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form">
+                            <form class="criar-card">
+                                <h3 class="titulo">Show product details</h3>
+                                <input type="text" id="serach">
+                                <br>
+                                <select name="selecao" id="category"></select>
+                                <br>
+                                <button id="btn-show-detail">Show product detail</button>
+                            </form>
+                            <div id="result-show-product"></div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="form">
+                            <form class="criar-card">
+                                <h3 class="titulo">Filter product</h3>
+                                <input type="text" id="serach">
+                                <br>
+                                <select name="selecao" id="category"></select>
+                                <br>
+                                <button id="btn-filter">Filter product</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conteúdo do site -->
+
+
+
+    <!-- Barra Lateral -->
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
