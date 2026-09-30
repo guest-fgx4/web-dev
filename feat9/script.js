@@ -123,6 +123,7 @@ pageData = {
 }
 
 const selectElement = document.getElementById("category-format")
+const selectDetail = document.getElementById("category-detail")
 const selectCategory = document.querySelectorAll("#category")
 const getProductList = document.querySelector("#product-list")
 const getProductdetails = document.querySelectorAll(".product-details")
@@ -134,6 +135,7 @@ const btnformat = document.getElementById("btn-format-price")
 const btnCreateCard = document.getElementById("btn-create-card")
 const btnFilter = document.getElementById("btn-filter")
 const btnFilterReset = document.getElementById("btn-filter-reset")
+const btnShowDetail = document.getElementById("btn-show-detail")
 
 
 
@@ -151,15 +153,30 @@ function dataToJson(id, nome, preco, categoria, imagem, descricao, emEstoque) {
     }
 }
 
-function updatePage(params) {
-    getProductList.innerHTML = "";
-    params.forEach(e => {
-        getProductList.innerHTML += createCard(e)
-    })
+function updatePage(params, append = false) {
+
+    
+    if (!append) {
+        getProductList.innerHTML = "";
+        params.forEach(e => {
+            getProductList.innerHTML += createCard(e)
+        })
+    }
+    else {
+        const newCard = document.createElement("div")
+        newCard.classList.add("col")
+
+        getProductList.appendChild(newCard)
+    }
+
 
     selectElement.innerHTML = "";
     pageData.data.forEach(e => {
         selectElement.innerHTML += `<option value="${e.id}">${e.nome}</option>`
+    })
+
+    params.forEach(e => {
+        selectDetail.innerHTML += `<option value="${e.id}">${e.nome}</option>`
     })
 }
 
@@ -173,7 +190,7 @@ function createCard(element) {
                                 <h5 class="card-title card-name">${element.nome}</h5>
                                 <h5 class="card-title card-price">${element.preco}</h5>
                                 <p class="card-text card-category">${category[element.categoria]}</p>
-                                <p class="card-text product-details">${element.descricao}</p>
+                                <!-- <p class="card-text product-details">${element.descricao}</p> -- >
                                 <a href="#" class="btn btn-primary">ok</a>
                             </div>
                         </div>
@@ -246,7 +263,8 @@ function createNewCard(params) {
 
     pageData.data.push(dataToJson(id, nome, preco, categoria, imagem, descricao, emEstoque))
 
-    updatePage(pageData.data)
+    // updatePage(pageData.data)
+    updatePage(pageData.data,true)
 
     rawdata[1].value = ""
     rawdata[3].value = 0
@@ -289,6 +307,9 @@ function render() {
         })
     })
 
+    pageData.data.forEach(e => {
+        selectDetail.innerHTML += `<option value="${e.id}">${e.nome}</option>`
+    })
 }
 
 render()
@@ -304,11 +325,15 @@ btnCreateCard.addEventListener("click", () => {
     createNewCard(currentForm)
 })
 
-btnFilter.addEventListener("click", () =>{
+btnFilter.addEventListener("click", () => {
     let selectedCategory = document.getElementsByClassName("btn-filter-selection")[0].value
     updatePage(pageData.data.filter((e) => e.categoria == selectedCategory))
 })
 
 btnFilterReset.addEventListener("click", () => {
     updatePage(pageData.data)
+})
+
+btnShowDetail.addEventListener("click", () => {
+    alert(pageData.data.filter((e) => e.id == selectDetail.value)[0].descricao)
 })
