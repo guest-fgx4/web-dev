@@ -153,20 +153,18 @@ function dataToJson(id, nome, preco, categoria, imagem, descricao, emEstoque) {
     }
 }
 
-function updatePage(params, append = false) {
+function updatePage(params, append = false, clearScreen = false) {
+
+    if (clearScreen)
+    {
+        getProductList.innerHTML = "";
+    }
 
     
     if (!append) {
-        getProductList.innerHTML = "";
         params.forEach(e => {
             getProductList.innerHTML += createCard(e)
         })
-    }
-    else {
-        const newCard = document.createElement("div")
-        newCard.classList.add("col")
-
-        getProductList.appendChild(newCard)
     }
 
 
@@ -175,6 +173,7 @@ function updatePage(params, append = false) {
         selectElement.innerHTML += `<option value="${e.id}">${e.nome}</option>`
     })
 
+    selectDetail.innerHTML = "";
     params.forEach(e => {
         selectDetail.innerHTML += `<option value="${e.id}">${e.nome}</option>`
     })
@@ -183,7 +182,7 @@ function updatePage(params, append = false) {
 
 function createCard(element) {
     let cardHtml = `<div class="col">
-                        <div id="card-${element.id}" class="card" style="width: 18rem;">
+                        <div id="card-${element.id}" class="card" style="width: 18rem; border-style: dashed; border-color: red">
                             <img src="https://images.unsplash.com/photo-1779896412317-5768a1911afb?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top" style="height: 150px;" alt="...">
                             <div class="card-body">
                                 <h5 class="card-title card-id">${element.id}</h5>
@@ -263,8 +262,61 @@ function createNewCard(params) {
 
     pageData.data.push(dataToJson(id, nome, preco, categoria, imagem, descricao, emEstoque))
 
+    if (rawdata[13].children[0].checked)
+    {
+        const newCard = document.createElement("div")
+        newCard.classList.add("col")
+
+        const nestedDiv = document.createElement("div")
+        nestedDiv.id = `card-${id}`
+        nestedDiv.classList.add("card")
+        nestedDiv.style.width = "18rem"
+        nestedDiv.style.borderStyle = "dashed"
+        nestedDiv.style.borderColor = "blue"
+        newCard.appendChild(nestedDiv)
+
+        const img = document.createElement("img");
+        img.classList.add("card-img-top")
+        img.style.height = "150px"
+        img.src = imagem;
+        nestedDiv.appendChild(img)
+
+        const nesNesDiv = document.createElement("div")
+        nesNesDiv.classList.add("card-body")
+        nestedDiv.appendChild(nesNesDiv)
+
+        const h5Id = document.createElement("h5")
+        h5Id.classList.add("card-title")
+        h5Id.classList.add("card-id")
+        h5Id.innerHTML = id
+        nesNesDiv.appendChild(h5Id)
+
+        const h5Name = document.createElement("h5")
+        h5Name.classList.add("card-title")
+        h5Name.classList.add("card-name")
+        h5Name.innerHTML = nome
+        nesNesDiv.appendChild(h5Name)
+
+        
+        const h5Price = document.createElement("h5")
+        h5Price.classList.add("card-title")
+        h5Price.classList.add("card-price")
+        h5Price.innerHTML = preco
+        nesNesDiv.appendChild(h5Price)
+
+        const pcategory = document.createElement("p")
+        pcategory.classList.add("card-text")
+        pcategory.classList.add("card-category")
+        pcategory.innerHTML = category[categoria]
+        nesNesDiv.appendChild(pcategory)
+
+
+        getProductList.appendChild(newCard)
+    }
+    
+
     // updatePage(pageData.data)
-    updatePage(pageData.data,true)
+    updatePage(pageData.data,rawdata[13].children[0].checked)
 
     rawdata[1].value = ""
     rawdata[3].value = 0
