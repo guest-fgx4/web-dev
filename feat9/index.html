@@ -43,6 +43,16 @@
                     <div class="col">
                         <div class="form">
                             <div class="caixa-pesquisa">
+                                <h3 class="titulo">Pesquisar</h3>
+                                <input type="text" name="" id="search" placeholder="Nome producto">
+                                <br>
+                                <button id="btn-format-price">Format price</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form">
+                            <div class="caixa-pesquisa">
                                 <h3 class="titulo">Format price</h3>
                                 <select name="selecao" id="category-format"></select>
                                 <br>
@@ -60,35 +70,12 @@
                                 <select name="selecao" id="category"></select> <br>
                                 
                                 <input type="url" placeholder="caminho imagem do item"> <br>
-                                <p> usar padrao: <input type="checkbox" name="Usar Padrao" id="ad"></p>
+                                <p> usar padrao: <input type="checkbox" name="Usar Padrao" id="ad" checked></p>
                                 <input type="text" placeholder="Descricao item"> <br>
                                 <br>
-                                <p>Adicionar Elemento com Append: <input type="checkbox" name="" id="addAppend"></p>
+                                <p>Adicionar Elemento com Append: <input type="checkbox" name="" id="addAppend" checked></p>
                                 <button id="btn-create-card">Create Card</button>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form">
-                            <div class="criar-card">
-                                <h3 class="titulo">Update/render category</h3>
-                                <input type="text" id="serach">
-                                <br>
-                                <select name="selecao" id="category"></select>
-                                <br>
-                                <button id="btn-render-category">Render</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form">
-                            <div class="criar-card">
-                                <h3 class="titulo">Show product details</h3>
-                                <select name="selecao" id="category-detail"></select>
-                                <br>
-                                <button id="btn-show-detail">Show product detail</button>
-                            </div>
-                            <div id="result-show-product"></div>
                         </div>
                     </div>
 
