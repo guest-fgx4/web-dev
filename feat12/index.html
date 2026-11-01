@@ -1,33 +1,51 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Atividade 12 - API</title>
-    <link rel="stylesheet" href="./style.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-</head>
+    <link rel="stylesheet" href="./style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+  </head>
 
-<body>
-
+  <body>
     <nav class="navbar bg-body-tertiary">
-        <div class="container">
-            <form class="d-flex justify-content-center occupy" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
+      <div class="container">
+        <form
+          id="search-form"
+          class="d-flex justify-content-center occupy"
+          role="search"
+        >
+          <input
+            name="search-term"
+            class="form-control me-2"
+            type="text"
+            placeholder="Search"
+            aria-label="Search"
+          />
+          <button class="btn btn-outline-success me-2" type="submit">
+            Search
+          </button>
+          <button class="btn btn-outline-danger" type="reset">Reset</button>
+        </form>
+      </div>
     </nav>
 
     <div class="container">
-
-        <div id="product-list" class="row">
-
+      <div id="spinner-fetch" class="d-flex justify-content-center">
+        <div class="spinner-border m-5" role="status">
+          <span class="visually-hidden">Loading...</span>
         </div>
+      </div>
 
-        <!-- <div class="row row-col-2">
+      <div id="movie-list" class="row row-cols-1 row-cols-md-3 g-4"></div>
+
+      <!-- <div class="row row-col-2">
             <div class="col-9">
                 <div class="row" id="product-list">
                 </div>
@@ -104,14 +122,13 @@
 
     <!-- Conteúdo do site -->
 
-
-
     <!-- Barra Lateral -->
 
     <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
